@@ -1,12 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from huggingface_hub import InferenceClient
-
+import os
 # Initialize FastAPI app
 app = FastAPI()
+api_key = api_key = os.getenv("HF_API_KEY")
 
 # Define the Hugging Face Inference Client
-client = InferenceClient(api_key="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")
+client = InferenceClient(api_key=api_key)
 
 # Define the input schema
 class PredictionInput(BaseModel):
