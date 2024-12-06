@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: airadllm
+    env: python
+    buildCommand: ""
+    startCommand: "./start.sh"
