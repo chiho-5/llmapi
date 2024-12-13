@@ -11,17 +11,17 @@ client = InferenceClient(api_key=api_key)
 
 # Define the input schema
 class PredictionInput(BaseModel):
-    prediction: str  # "pneumonia" or "normal"
+    class: str  # "pneumonia" or "normal"
 
 # LLM prompt template
-def generate_prompt(prediction: str) -> str:
-    if prediction == "pneumonia":
+def generate_prompt(class: str) -> str:
+    if class == "pneumonia":
         return """
         The AI has detected a positive case of pneumonia. 
         Generate a supportive and empathetic message with recommendations for the next steps. 
         Also, provide at least one health tip for the patient.
         """
-    elif prediction == "normal":
+    elif class == "normal":
         return """
         The AI has determined no signs of pneumonia (normal case). 
         Generate a warm, encouraging message thanking the user for monitoring their health. 
@@ -32,14 +32,14 @@ def generate_prompt(prediction: str) -> str:
 # API route to handle predictions
 @app.post("/predict/")
 async def predict_next_step(input_data: PredictionInput):
-    prediction = input_data.prediction.lower()
+    class = input_data.prediction.lower()
 
     # Validate the input
-    if prediction not in ["pneumonia", "normal"]:
+    if class not in ["pneumonia", "normal"]:
         raise HTTPException(status_code=400, detail="Invalid prediction value. Use 'pneumonia' or 'normal'.")
 
     # Generate the prompt
-    prompt = generate_prompt(prediction)
+    prompt = generate_prompt(class)
     if not prompt:
         raise HTTPException(status_code=500, detail="Error generating prompt.")
 
