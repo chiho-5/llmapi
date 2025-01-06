@@ -39,7 +39,7 @@ async def predict_next_step(input_data: PredictionInput):
         raise HTTPException(status_code=400, detail="Invalid prediction value. Use 'pneumonia' or 'normal'.")
 
     # Generate the prompt
-    prompt = generate_prompt(class)
+    prompt = generate_prompt(prediction)
     if not prompt:
         raise HTTPException(status_code=500, detail="Error generating prompt.")
 
