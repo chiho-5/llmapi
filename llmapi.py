@@ -14,7 +14,7 @@ class PredictionInput(BaseModel):
     prediction: str  # "pneumonia" or "normal"
 
 # LLM prompt template
-def generate_prompt(class: str) -> str:
+def generate_prompt(prediction: str) -> str:
     if prediction == "pneumonia":
         return """
         The AI has detected a positive case of pneumonia. 
