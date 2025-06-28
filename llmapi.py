@@ -10,7 +10,7 @@ app = FastAPI()
 
 # Load API key from environment variable
 api_key = os.getenv("HF_API_KEY")
-# api_key = "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"
+# api_key = "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"
 if not api_key:
     raise ValueError("HF_API_KEY environment variable is not set.")
 
