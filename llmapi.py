@@ -15,7 +15,7 @@ if not api_key:
     raise ValueError("HF_API_KEY environment variable is not set.")
 
 # Define the Hugging Face Inference Client
-client = InferenceClient(model="mistralai/Mistral-7B-Instruct-v0.3", token=api_key)
+client = InferenceClient(model="mistralai/Mistral-7B-Instruct-v0.1", token=api_key)
 
 # Thread-safe in-memory store for conversation history
 conversation_history = defaultdict(lambda: {"history": []})
