@@ -4,7 +4,7 @@ from huggingface_hub import InferenceClient
 from collections import defaultdict
 import os
 
-HF_TOKEN = "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"
+HF_TOKEN = os.getenv("HF_TOKEN")
 if not HF_TOKEN:
     raise ValueError("HF_TOKEN environment variable not set")
 
